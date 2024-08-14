@@ -1,0 +1,33 @@
+<div class="container-fluid">
+    <h2>Login Form</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="register()">
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="UserName" id="username" formControlName="userName">
+        <div *ngIf="loginForm?.get('userName')?.invalid && loginForm?.get('userName')?.touched" class="text-danger">
+          <small *ngIf="loginForm?.get('userName')?.hasError('required')">Username is required.</small>
+          <small *ngIf="loginForm?.get('userName')?.hasError('minLength')">Username must be at least 5 characters long.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password">
+        <div *ngIf="loginForm?.get('password')?.invalid && loginForm?.get('password')?.touched" class="text-danger">
+          <small *ngIf="loginForm?.get('password')?.hasError('required')">Password is required.</small>
+          <small *ngIf="loginForm?.get('password')?.hasError('minLength')">Password must be at least 8 characters long.</small>
+          <small *ngIf="loginForm?.get('password')?.hasError('passwordStrength')">
+            Password must contain at least one number, one uppercase letter, one lowercase letter, and one special character.
+          </small>
+        </div>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" (click)="login()">Login</button>
+    
+
+      <a href="/forgetpassword">Forget Password</a>
+      <p>-------------------------------------------------------------------------</p>
+      <p>If You are New User Create an Account</p>
+      <button type="button" class="btn btn-primary" (click)="creataccount()">Create Account</button>
+    </form>
+  </div>
+  

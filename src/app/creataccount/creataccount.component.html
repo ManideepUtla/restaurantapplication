@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <h2>Create Account</h2>
+    <form [formGroup]="createForm" (ngSubmit)="register()">
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="FullName" id="name" formControlName="name">
+        <div *ngIf="createForm?.get('name')?.invalid && createForm?.get('name')?.touched" class="text-danger">
+          <small *ngIf="createForm?.get('name')?.hasError('required')">Name is required.</small>
+          <small *ngIf="createForm?.get('name')?.hasError('minLength')">Name must be at least 3 characters long.</small>
+        </div>
+    </div>
+      
+    <div class="form-group">
+        <input type="tel" class="form-control" placeholder="MobileNo" id="mobile" formControlName="mobileNo">
+        <div *ngIf="createForm?.get('mobileNo')?.invalid && createForm?.get('mobileNo')?.touched" class="text-danger">
+          <small *ngIf="createForm?.get('mobileNo')?.hasError('required')">Mobile number is required.</small>
+          <small *ngIf="createForm?.get('mobileNo')?.hasError('pattern')">Please enter a valid 10-digit mobile number.</small>
+        </div>
+    </div>
+     
+  
+
+  
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="UserName" id="username" formControlName="userName">
+        <div *ngIf="createForm?.get('userName')?.invalid && createForm?.get('userName')?.touched" class="text-danger">
+          <small *ngIf="createForm?.get('userName')?.hasError('required')">Username is required.</small>
+          <small *ngIf="createForm?.get('userName')?.hasError('minLength')">Username must be at least 5 characters long.</small>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" id="password" formControlName="password">
+        <div *ngIf="createForm?.get('password')?.invalid && createForm?.get('password')?.touched" class="text-danger">
+          <small *ngIf="createForm?.get('password')?.hasError('required')">Password is required.</small>
+          <small *ngIf="createForm?.get('password')?.hasError('minLength')">Password must be at least 8 characters long.</small>
+          <small *ngIf="createForm?.get('password')?.hasError('passwordStrength')">
+            Password must contain at least one number, one uppercase letter, one lowercase letter, and one special character.
+          </small>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Re-enter Password" id="password" formControlName="password">
+        <div *ngIf="createForm?.get('password')?.invalid && createForm?.get('password')?.touched" class="text-danger">
+          <small *ngIf="createForm?.get('password')?.hasError('required')">Password is required.</small>
+          <small *ngIf="createForm?.get('password')?.hasError('minLength')">Password must be at least 8 characters long.</small>
+          <small *ngIf="createForm?.get('password')?.hasError('passwordStrength')">
+            Password must contain at least one number, one uppercase letter, one lowercase letter, and one special character.
+          </small>
+        </div>
+      </div>
+
+
+  
+      <button type="submit" class="btn btn-primary" (click)="login()">Submit</button>
+    </form>
+  </div>
+  
